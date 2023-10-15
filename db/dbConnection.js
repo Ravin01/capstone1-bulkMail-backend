@@ -10,7 +10,7 @@ const local = 'mongodb://localhost:27017/capstone01-bulkMail'
 const dbUsername = process.env.DB_USERNAME || ''
 const dbPassword = process.env.DB_PASSWORD || ''
 const cluster = process.env.DB_CLUSTER || ''
-const dbName = process.env.DB_Name || ''
+const dbName = process.env.DB_NAME || ''
 
 const dbCloud = `mongodb+srv://${dbUsername}:${dbPassword}@${cluster}/${dbName}?retryWrites=true&w=majority`
 // Connect to DB
