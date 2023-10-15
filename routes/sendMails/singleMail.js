@@ -49,7 +49,7 @@ singleMailRoute.post("/", async (req, res) => {
           text: payload.text,
         });
         let spoTime = Date.now()
-        newUser = await mailsModel.create({ ...payload, time: Date.now(), to : payload.to[i], mailId : "3" });
+        newUser = await mailsModel.create({ ...payload, time: Date.now(), to : payload.to[i], mailId : v4() });
       }
       if (newUser && sendMail) {
         res.send("Mail sended");
