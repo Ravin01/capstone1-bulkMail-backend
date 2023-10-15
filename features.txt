@@ -1,0 +1,21 @@
+Bulk Mail : 
+
+Functions : 
+1. User registration flow
+2. Google login/authentication
+3. User can send single mail
+4. user can send bulk mail
+5. user can select how many mail send at one enter
+6. user can delete the mail
+7. to send bulk email,  user can manually enter all mails or get mails from database
+8. Important emails options
+9. Google login, authentication
+
+UI : 
+1. light and dark theme
+2. router => inbox, sended mail, 
+3. Display user profile/name
+4. search mail
+5. Application loader animation
+6. neon light background
+7. success or failure alert
