@@ -17,7 +17,7 @@ loginRoute.post('/', async(req,res)=>{
                 }else{
                     const response = checkUser.toObject()
                     const accessToken = jwt.sign(response, process.env.JWT_SECRET, {expiresIn: '1d'})
-                    console.log({...response, accessToken })
+                    // console.log({...response, accessToken })
                     res.send({...response, accessToken })
                 }
             })
