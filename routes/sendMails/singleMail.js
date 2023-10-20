@@ -38,7 +38,7 @@ singleMailRoute.get('/:mailId', async(req,res)=>{
 singleMailRoute.post("/", async (req, res) => {
   const payload = req.body;
   try {
-    if (payload.from === process.env.FROM) {
+    // if (payload.from === process.env.FROM) {
       let newUser, sendMail;
       for (let i = 0; i <= payload.to.length - 1; i++) {
         sendMail = await transporter.sendMail({
@@ -56,9 +56,9 @@ singleMailRoute.post("/", async (req, res) => {
       } else {
         res.status(401).send("Error, check your connectivity");
       }
-    } else {
-      res.status(402).send("You cannot send email, change your from");
-    }
+    // } else {
+    //   res.status(402).send("You cannot send email, change your from");
+    // }
   } catch (err) {
     console.error(err);
     res.status(500).send(err);

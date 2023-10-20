@@ -1,5 +1,7 @@
 import Express from "express";
 import cors from 'cors'
+import jwt from "jsonwebtoken";
+
 import { connectToDb } from "./db/dbConnection.js";
 import { registrationRoute } from "./routes/registration/registration.js";
 import { loginRoute } from "./routes/registration/login.js";
@@ -24,6 +26,23 @@ app.use(Express.json())
 app.use(cors())
 
 
+
+const authMiddleWare=(req,res,next)=>{
+    // const [,token] = req.headers['authorization'].split(' ')
+    const token = req.headers['auth-token']
+    try{
+        jwt.verify(token, process.env.JWT_SECRET)
+        next()
+    }catch(err){
+        console.error(err)
+        res.status(401).send({msg:'unauthorized'})
+    }
+}
+
+// app.use(authMiddleWare)
+
+
+
 // Route middleware
 app.use('/registration', registrationRoute)
 
@@ -33,7 +52,7 @@ app.use('/forgotPassword', forgotPasswordRoute)
 
 app.use('/resetPassword', resetPasswordRoute)
 
-app.use('/sendMail', singleMailRoute)
+app.use('/sendMail', authMiddleWare, singleMailRoute)
 
 
 // home page
