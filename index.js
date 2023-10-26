@@ -7,7 +7,8 @@ import { registrationRoute } from "./routes/registration/registration.js";
 import { loginRoute } from "./routes/registration/login.js";
 import { forgotPasswordRoute } from "./routes/registration/forgotPassword.js";
 import { resetPasswordRoute } from "./routes/registration/resetPassword.js";
-import { singleMailRoute } from "./routes/sendMails/singleMail.js";
+import { normalMailRoute } from "./routes/sendMails/normalMail.js";
+import { importantMailRoute } from "./routes/sendMails/importantMail.js";
 
 
 // Express
@@ -52,7 +53,9 @@ app.use('/forgotPassword', forgotPasswordRoute)
 
 app.use('/resetPassword', resetPasswordRoute)
 
-app.use('/sendMail', authMiddleWare, singleMailRoute)
+app.use('/mails', authMiddleWare, normalMailRoute)
+
+app.use('/importantMails', authMiddleWare, importantMailRoute)
 
 
 // home page

@@ -3,9 +3,9 @@ import { mailsModel } from "../../db/models.js";
 import { mailOptions, transporter } from "../mail.js";
 import {v4} from 'uuid'
 
-export const singleMailRoute = Express.Router();
+export const normalMailRoute = Express.Router();
 
-singleMailRoute.get("/", async (req, res) => {
+normalMailRoute.get("/", async (req, res) => {
   try {
     const allMail = await mailsModel.find({});
     if (allMail) {
@@ -19,7 +19,7 @@ singleMailRoute.get("/", async (req, res) => {
   }
 });
 
-singleMailRoute.get('/:mailId', async(req,res)=>{
+normalMailRoute.get('/:mailId', async(req,res)=>{
   const payload = req.body
   const {mailId} = req.params;
   try{
@@ -35,7 +35,7 @@ singleMailRoute.get('/:mailId', async(req,res)=>{
   }
 })
 
-singleMailRoute.post("/", async (req, res) => {
+normalMailRoute.post("/", async (req, res) => {
   const payload = req.body;
   try {
     // if (payload.from === process.env.FROM) {

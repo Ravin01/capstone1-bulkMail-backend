@@ -16,7 +16,7 @@ const dbCloud = `mongodb+srv://${dbUsername}:${dbPassword}@${cluster}/${dbName}?
 // Connect to DB
 export const connectToDb = async()=>{
     try{
-        const connect = await mongoose.connect(dbCloud)
+        const connect = await mongoose.connect(local)
         if(connect){
             console.log('DB connected successfully')
         }else{
